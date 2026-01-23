@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>受访者画像</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>body{margin:0;padding:0;overflow:hidden;} #main{width:100vw;height:100vh;}</style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('main'));
+        var option = {
+            title: { text: '受访者画像：年轻群体为主', left: 'center', top: '5%', textStyle:{fontSize:16} },
+            tooltip: { trigger: 'item' },
+            legend: { top: '12%', left: 'center' },
+            grid: { top: '25%', bottom: '10%' },
+            xAxis: { type: 'category', data: ['18-30岁', '46-60岁', '31-45岁', '18岁以下', '60岁以上'], axisLabel:{interval:0, rotate:20} },
+            yAxis: { type: 'value', name: '人数' },
+            series: [
+                {
+                    name: '年龄分布',
+                    type: 'bar',
+                    data: [470, 47, 32, 23, 22],
+                    itemStyle: { color: '#5470C6' },
+                    label: { show: true, position: 'top' }
+                },
+                {
+                    name: '性别比例',
+                    type: 'pie',
+                    radius: ['15%', '25%'],
+                    center: ['75%', '25%'],
+                    data: [
+                        { value: 320, name: '女', itemStyle:{color:'#FF9AA2'} },
+                        { value: 274, name: '男', itemStyle:{color:'#73C0DE'} }
+                    ],
+                    label: { show: false }
+                }
+            ]
+        };
+        chart.setOption(option);
+        window.onresize = function() { chart.resize(); };
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网暴经历</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>body{margin:0;padding:0;} #main{width:100vw;height:100vh;}</style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('main'));
+        var option = {
+            title: { text: '近半数受访者遭遇过攻击', left: 'center', top: '10%', textStyle:{fontSize:18} },
+            tooltip: { trigger: 'item' },
+            series: [
+                {
+                    name: '网暴经历',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    center: ['50%', '55%'],
+                    itemStyle: { borderRadius: 10, borderColor: '#fff', borderWidth: 2 },
+                    label: { show: true, formatter: '{b}\n{d}%', fontSize: 14 },
+                    data: [
+                        { value: 289, name: '有经历', itemStyle: { color: '#EE6666' } },
+                        { value: 305, name: '无经历', itemStyle: { color: '#91CC75' } }
+                    ]
+                }
+            ]
+        };
+        chart.setOption(option);
+        window.onresize = function() { chart.resize(); };
+    </script>
+</body>
+</html>
